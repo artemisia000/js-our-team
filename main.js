@@ -33,7 +33,7 @@ const cards = [
     },
 
     {
-        image: 'barbara-ramos-graphic-designer.jpg',
+        image: 'img/barbara-ramos-graphic-designer.jpg',
         name: 'Barbara Ramos',
         profession: 'Graphic Designer',
     },
@@ -55,9 +55,11 @@ genera(cards,teamContainer);
 
 function genera(cards,teamContainer){
 
-for(let i = 0; i = cards.length ; i++){
+for(let i = 0; i <= cards.length ; i++){ 
+
     let cardItem = cards[i];
     console.log(cardItem);
+
 
 //aggiungere le specifiche alle cards
 
@@ -76,4 +78,25 @@ for(let i = 0; i = cards.length ; i++){
     `
 }
 };
+
+//inserisci dati nuovi utenti
+
+const inputName = document.getElementById('name');
+const inputRole = document.getElementById('role');
+const inputImage = document.getElementById('image');
+
+
+const btnMember = document.getElementById(`addMemberButton`);
+
+//generare ascolto bottone
+
+btnMember.addEventListener(`click`, function(){
+
+    console.log(`click`);
+})
+
+
+
+
+
 
