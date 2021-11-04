@@ -79,21 +79,67 @@ for(let i = 0; i <= cards.length ; i++){
 }
 };
 
-//inserisci dati nuovi utenti
 
-const inputName = document.getElementById('name');
-const inputRole = document.getElementById('role');
-const inputImage = document.getElementById('image');
+//referenza nuovi membri
+
+    const inputName = document.getElementById('name');
+    console.log(inputName);
+    const inputRole = document.getElementById('role');
+    const inputImage = document.getElementById('image'); 
 
 
-const btnMember = document.getElementById(`addMemberButton`);
+//referenza bottone
+
+const addMemberButton = document.getElementById(`addMember`);
+
+//ref cards
+
+const cards = [];
+
+
 
 //generare ascolto bottone
 
-btnMember.addEventListener(`click`, function(){
+addMemberButton.addEventListener(`click`, () => newMember());
 
-    console.log(`click`);
-})
+
+
+function newMember () {
+    let member = {
+    name: inputName.value,
+    role: inputRole.value,
+    image: inputImage.value,
+};
+cards.push(member);
+    genera(cards,teamContainer);
+    inputName.value = '';
+    inputRole.value = '';
+    inputImage.value = '';
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
