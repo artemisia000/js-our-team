@@ -48,16 +48,18 @@ console.table(cards);
 
 const teamContainer = document.querySelector('.team-container');
 
+genera(cards,teamContainer);
+
+
 //generare i markup delle con i dati delle cards
 
-for(let i = 0; i = cards.length ; i++){
-    let cardsItem = cards[i];
-    console.log(cardsItem);
+function genera(cards,teamContainer){
 
+for(let i = 0; i = cards.length ; i++){
+    let cardItem = cards[i];
+    console.log(cardItem);
 
 //aggiungere le specifiche alle cards
-
-
 
     teamContainer.innerHTML += `
     <div class="team-card">
@@ -67,9 +69,11 @@ for(let i = 0; i = cards.length ; i++){
           alt="Wayne Barnett" />
         </div>
         <div class="card-text">
-          <h3>${cardsItem.name} </h3>
-          <p>${cardsItem.profession} </p>
+          <h3>${cardItem.name}</h3>
+          <p>${cardItem.profession}</p>
         </div>
   </div>
     `
 }
+};
+
