@@ -94,9 +94,6 @@ const addMemberButton = document.getElementById(`addMember`);
 
 //ref cards
 
-const cards = [];
-
-
 
 //generare ascolto bottone
 
