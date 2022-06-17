@@ -1,118 +1,137 @@
 
 //crea la struttura dati delle card
 
-const cards = [
+const team = [
     {
-        image: 'img/wayne-barnett-founder-ceo.jpg',
+        image: 'wayne-barnett-founder-ceo.jpg',
         name: 'Wayne Barnett',
-        profession: 'Founder & CEO',
+        role: 'Founder & CEO',
     },
 
     {
-        image: 'img/angela-caroll-chief-editor.jpg',
+        image: 'angela-caroll-chief-editor.jpg',
         name: 'Angela Caroll',
-        profession: 'Chef Editor',
+        role: 'Chef Editor',
     },
 
     {
-        image: 'img/walter-gordon-office-manager.jpg',
+        image: 'walter-gordon-office-manager.jpg',
         name: 'Walter Gordon',
-        profession: 'Office Manager',
+        role: 'Office Manager',
     },
 
     {
-        image: 'img/angela-lopez-social-media-manager.jpg',
+        image: 'angela-lopez-social-media-manager.jpg',
         name: 'Angela Lopez',
-        profession: 'Social Media Menager',
+        role: 'Social Media Menager',
     },
 
     {
-        image: 'img/scott-estrada-developer.jpg',
+        image: 'scott-estrada-developer.jpg',
         name: 'Scott Estrada',
-        profession: 'Developer',
+        role: 'Developer',
     },
 
     {
-        image: 'img/barbara-ramos-graphic-designer.jpg',
+        image: 'barbara-ramos-graphic-designer.jpg',
         name: 'Barbara Ramos',
-        profession: 'Graphic Designer',
+        role: 'Graphic Designer',
     },
-
 
 ];
 
-console.log(cards);
-console.table(cards);
+console.table(team);
 
-//creare un contenitore per tutti i dati delle cards
+//2.renderizzare team iniziale
+//-ottenere il container
+//-loop per generare dati
+//-generazione nostro membere
+//-aggiunta conatiner team
 
-const teamContainer = document.querySelector('.team-container');
+const container = document.querySelector('.team-container');
 
-genera(cards,teamContainer);
-
-
-//generare i markup delle con i dati delle cards
-
-function genera(cards,teamContainer){
-
-for(let i = 0; i <= cards.length ; i++){ 
-
-    let cardItem = cards[i];
-    console.log(cardItem);
+//ren team
+drawTeam(team , container);
 
 
-//aggiungere le specifiche alle cards
+//3.aggiungere nuovo membro
+//-ref bottone per creazione
+//-ref inputa valori
+//-creazione nuovo membro
+//-aggiungi membro al team
+//-rend al nuovo Team
 
-    teamContainer.innerHTML += `
-    <div class="team-card">
-        <div class="card-image">
-          <img
-          src="img/wayne-barnett-founder-ceo.jpg"
-          alt="Wayne Barnett" />
-        </div>
-        <div class="card-text">
-          <h3>${cardItem.name}</h3>
-          <p>${cardItem.profession}</p>
-        </div>
-  </div>
-    `
+const addBtn = document.getElementById('addMemberButton');
+const nameInput = document.getElementById('name');
+const roleInput = document.getElementById('role');
+const imageInput = document.getElementById('image');
+
+
+addBtn.addEventListener('click', () => {
+    //gen nuovo oggetto
+    const newMember = genNewMember(nameInput, roleInput, imageInput);
+
+    //push nel team 
+    team.push(newMember);
+
+    //re-render del nuovo team con aggiunta card nuova
+    drawTeam(team , container);
+
+    
+
+})
+
+
+
+/**
+ ***FUNCTION***
+ */
+
+
+//Gen team e print in schermo
+function drawTeam(team, container) {
+    for (let i = 0; i < team.length; i++){
+        const member = team[i];
+        console.log(member);
+
+        container.innerHTML += `
+        <div class="team-card">
+            <div class="card-image">
+              <img
+                src="img/${member.image}"
+                alt="${member.name}"
+              />
+            </div>
+            <div class="card-text">
+              <h3>${member.name}</h3>
+              <p>${member.role}</p>
+            </div>
+          </div>
+        </div>      
+        `
+    }
 }
-};
 
 
-//referenza nuovi membri
+function genNewMember(name, role, image) {
+    //ottenere valori input
+    //crea obj
+    const newTeamMember = {
+        name: name.value,
+        role: role.value,
+        image: image.value
+    };
 
-    const inputName = document.getElementById('name');
-    console.log(inputName);
-    const inputRole = document.getElementById('role');
-    const inputImage = document.getElementById('image'); 
+    //reset valori input
+    name.value = '';
+    role.value = '';
+    image.value = '';
 
+    //return nuovo member
+    return newTeamMember;
 
-//referenza bottone
-
-const addMemberButton = document.getElementById(`addMember`);
-
-//ref cards
-
-
-//generare ascolto bottone
-
-addMemberButton.addEventListener(`click`, () => newMember());
-
-
-
-function newMember () {
-    let member = {
-    name: inputName.value,
-    role: inputRole.value,
-    image: inputImage.value,
-};
-cards.push(member);
-    genera(cards,teamContainer);
-    inputName.value = '';
-    inputRole.value = '';
-    inputImage.value = '';
 }
+
 
 
 
