@@ -77,8 +77,6 @@ addBtn.addEventListener('click', () => {
     //re-render del nuovo team con aggiunta card nuova
     drawTeam(team , container);
 
-    
-
 })
 
 
@@ -90,6 +88,9 @@ addBtn.addEventListener('click', () => {
 
 //Gen team e print in schermo
 function drawTeam(team, container) {
+    //reset container per ogni nuova aggiunta
+    container.innerHTML = "";
+
     for (let i = 0; i < team.length; i++){
         const member = team[i];
         console.log(member);
@@ -99,8 +100,7 @@ function drawTeam(team, container) {
             <div class="card-image">
               <img
                 src="img/${member.image}"
-                alt="${member.name}"
-              />
+                alt="${member.name}"/>
             </div>
             <div class="card-text">
               <h3>${member.name}</h3>
